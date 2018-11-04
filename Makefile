@@ -3,7 +3,8 @@ MPICC=mpicxx
 
 CFLAGS=-O3 -Wall -Wno-sign-compare
 
-all: lda infer mpi_lda
+#all: lda infer mpi_lda
+all: lda infer
 
 clean:
 	rm -f *.o

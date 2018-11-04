@@ -45,6 +45,7 @@ using std::istringstream;
 using std::set;
 using std::map;
 
+// 加载和初始化训练语料
 int LoadAndInitTrainingCorpus(const string& corpus_file,
                               int num_topics,
                               LDACorpus* corpus,
@@ -146,3 +147,5 @@ int main(int argc, char** argv) {
 
   return 0;
 }
+
+
