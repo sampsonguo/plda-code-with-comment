@@ -123,7 +123,8 @@ int main(int argc, char** argv) {
   LDASampler sampler(flags.alpha_, flags.beta_, &model, &accum_model);
 
   sampler.InitModelGivenTopics(corpus);
-
+  
+  // 核心代码：开始迭代
   for (int iter = 0; iter < flags.total_iterations_; ++iter) {
     std::cout << "Iteration " << iter << " ...\n";
     if (flags.compute_likelihood_ == "true") {
@@ -135,6 +136,7 @@ int main(int argc, char** argv) {
       }
       std::cout << "Loglikelihood: " << loglikelihood << std::endl;
     }
+    // 核心，在sampling中迭代
     sampler.DoIteration(&corpus, true, iter < flags.burn_in_iterations_);
   }
   accum_model.AverageModel(

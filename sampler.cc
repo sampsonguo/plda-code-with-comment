@@ -44,12 +44,14 @@ void LDASampler::InitModelGivenTopics(const LDACorpus& corpus) {
   }
 }
 
+// 核心，进行迭代
 void LDASampler::DoIteration(LDACorpus* corpus,
                              bool train_model,
                              bool burn_in) {
   for (list<LDADocument*>::iterator iter = corpus->begin();
        iter != corpus->end();
        ++iter) {
+    // 核心，对doc采样topic
     SampleNewTopicsForDocument(*iter, train_model);
   }
   if (accum_model_ != NULL && train_model && !burn_in) {
@@ -57,6 +59,7 @@ void LDASampler::DoIteration(LDACorpus* corpus,
   }
 }
 
+// 核心，
 void LDASampler::SampleNewTopicsForDocument(LDADocument* document,
                                             bool update_model) {
   for (LDADocument::WordOccurrenceIterator iterator(document);
